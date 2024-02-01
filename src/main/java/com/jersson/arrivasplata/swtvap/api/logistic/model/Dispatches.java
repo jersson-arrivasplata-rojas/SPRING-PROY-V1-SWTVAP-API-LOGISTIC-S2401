@@ -17,7 +17,7 @@ public class Dispatches {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long dispatchesId;
+    private Long id;
 
     @Column(name = "order_id")
     private Long orderId;
@@ -33,15 +33,19 @@ public class Dispatches {
     @Enumerated(EnumType.ORDINAL)
     private Status status;
 
-    @Column(length = 250)
+    @Column(columnDefinition = "TEXT")
     private String otherDetails;
 
     @OneToOne
     @JoinColumn(name = "provider_id", referencedColumnName = "id", insertable = false, updatable = false)
     private Provider provider;
-
+/*
     @OneToMany(mappedBy = "order_id", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonIgnore
     private Set<Order> order;
+*/
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "id", insertable = false, updatable = false)
+    private Order order;
 
 }

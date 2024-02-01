@@ -1,5 +1,5 @@
 package com.jersson.arrivasplata.swtvap.api.logistic.expose.controllers;
-import com.jersson.arrivasplata.swtvap.api.logistic.expose.controllers.DispatchesController;
+import com.jersson.arrivasplata.swtvap.api.logistic.expose.DispatchesController;
 import com.jersson.arrivasplata.swtvap.api.logistic.business.service.DispatchesService;
 import com.jersson.arrivasplata.swtvap.api.logistic.mapper.DispatchesMapper;
 import com.jersson.arrivasplata.swtvap.api.logistic.model.Dispatches;
@@ -58,7 +58,7 @@ public class DispatchesControllerImpl implements DispatchesController{
     @ResponseStatus(HttpStatus.OK)
     public Mono<DispatchesResponse> updateDispatches(@PathVariable Long id, @RequestBody DispatchesRequest dispatchesRequest) {
         Dispatches dispatches = dispatchesMapper.dispatchesRequestToDispatches(dispatchesRequest);
-        dispatches.setDispatchesId(id);
+        dispatches.setId(id);
         return dispatchesService.updateDispatches(dispatches)
                 .map(updatedDispatches -> {
                     DispatchesResponse dispatchesResponse = dispatchesMapper.dispatchesToDispatchesResponse(updatedDispatches);

@@ -1,10 +1,11 @@
 package com.jersson.arrivasplata.swtvap.api.logistic.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jersson.arrivasplata.swtvap.api.logistic.enums.Status;
-import com.jersson.arrivasplata.swtvap.api.order.enums.Status;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @Entity
@@ -47,5 +48,9 @@ public class Order {
 
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
+
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+    @JsonIgnore
+    private Set<Dispatches> dispatches;
 
 }
