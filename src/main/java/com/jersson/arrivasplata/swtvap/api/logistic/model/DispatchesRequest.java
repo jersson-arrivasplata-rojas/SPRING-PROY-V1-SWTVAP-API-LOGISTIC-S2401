@@ -13,6 +13,7 @@ public class DispatchesRequest {
     private Long orderId;
     private Long providerId;
     private BigDecimal cost;
+    private String typeCurrency;
     private Timestamp date;
     private Status status;
     private String otherDetails;

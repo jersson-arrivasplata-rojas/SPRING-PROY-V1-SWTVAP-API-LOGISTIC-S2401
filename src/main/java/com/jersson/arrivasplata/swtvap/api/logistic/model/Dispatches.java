@@ -28,6 +28,9 @@ public class Dispatches {
     @Column(precision = 10, scale = 2)
     private BigDecimal cost;
 
+    @Column(name = "type_currency", length = 10)
+    private String typeCurrency;
+
     private Timestamp date;
 
     @Enumerated(EnumType.ORDINAL)
