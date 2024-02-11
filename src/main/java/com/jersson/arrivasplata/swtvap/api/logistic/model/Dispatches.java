@@ -1,14 +1,23 @@
 package com.jersson.arrivasplata.swtvap.api.logistic.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.jersson.arrivasplata.swtvap.api.logistic.enums.Status;
-import jakarta.persistence.Entity;
-import jakarta.persistence.*;
-import lombok.Data;
-
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Set;
+
+import com.jersson.arrivasplata.swtvap.api.logistic.enums.Status;
+
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+import lombok.Data;
 
 @Data
 @Entity
@@ -19,10 +28,12 @@ public class Dispatches {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "order_id")
+    @Nullable()
+    @Column(name = "order_id", nullable = true)
     private Long orderId;
 
-    @Column(name = "provider_id")
+    @Nullable()
+    @Column(name = "provider_id", nullable = true)
     private Long providerId;
 
     @Column(precision = 10, scale = 2)

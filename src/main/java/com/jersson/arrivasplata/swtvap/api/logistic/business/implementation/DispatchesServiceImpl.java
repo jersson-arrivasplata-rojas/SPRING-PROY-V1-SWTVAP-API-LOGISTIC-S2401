@@ -1,14 +1,16 @@
 package com.jersson.arrivasplata.swtvap.api.logistic.business.implementation;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.jersson.arrivasplata.swtvap.api.logistic.business.service.DispatchesService;
 import com.jersson.arrivasplata.swtvap.api.logistic.exception.CustomException;
 import com.jersson.arrivasplata.swtvap.api.logistic.model.Dispatches;
 import com.jersson.arrivasplata.swtvap.api.logistic.repository.DispatchesRepository;
-import org.springframework.stereotype.Service;
+
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
-import java.util.Optional;
 
 @Service
 public class DispatchesServiceImpl implements DispatchesService {
@@ -28,14 +30,14 @@ public class DispatchesServiceImpl implements DispatchesService {
     }
 
     public Mono<Dispatches> createDispatches(Dispatches dispatches) {
-        if (dispatches.getOrderId() == null || dispatches.getProviderId()==null) {
+        if (dispatches.getOrderId() == null) {
             throw new CustomException("Order|Provider id is required.");
         }
         return Mono.just(dispatchesRepository.save(dispatches));
     }
 
     public Mono<Dispatches> updateDispatches(Dispatches dispatches) {
-        if (dispatches.getOrderId() == null || dispatches.getProviderId()==null) {
+        if (dispatches.getOrderId() == null) {
             throw new CustomException("Order|Provider id is required.");
         }
         return Mono.just(dispatchesRepository.save(dispatches));
