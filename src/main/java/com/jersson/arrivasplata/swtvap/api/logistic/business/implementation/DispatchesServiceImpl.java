@@ -31,14 +31,14 @@ public class DispatchesServiceImpl implements DispatchesService {
 
     public Mono<Dispatches> createDispatches(Dispatches dispatches) {
         if (dispatches.getOrderId() == null) {
-            throw new CustomException("Order|Provider id is required.");
+            throw new CustomException("Order id is required.");
         }
         return Mono.just(dispatchesRepository.save(dispatches));
     }
 
     public Mono<Dispatches> updateDispatches(Dispatches dispatches) {
         if (dispatches.getOrderId() == null) {
-            throw new CustomException("Order|Provider id is required.");
+            throw new CustomException("Order id is required.");
         }
         return Mono.just(dispatchesRepository.save(dispatches));
     }

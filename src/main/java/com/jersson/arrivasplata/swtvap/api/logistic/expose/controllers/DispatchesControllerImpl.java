@@ -68,7 +68,7 @@ public class DispatchesControllerImpl implements DispatchesController{
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public Mono<Void> deleteDispatches(Long id) {
+    public Mono<Void> deleteDispatches(@PathVariable Long id) {
         return dispatchesService.deleteDispatchesById(id);
 
     }
