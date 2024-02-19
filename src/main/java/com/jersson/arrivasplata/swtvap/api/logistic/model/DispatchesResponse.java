@@ -5,6 +5,8 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+
 @Data
 public class DispatchesResponse {
     private Long id;
@@ -15,4 +17,5 @@ public class DispatchesResponse {
     private Timestamp date;
     private Status status;
     private String otherDetails;
+    private LocalDate deletedAt;
 }

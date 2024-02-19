@@ -2,6 +2,7 @@ package com.jersson.arrivasplata.swtvap.api.logistic.model;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import com.jersson.arrivasplata.swtvap.api.logistic.enums.Status;
 
@@ -49,6 +50,9 @@ public class Dispatches {
 
     @Column(columnDefinition = "TEXT")
     private String otherDetails;
+
+    @Column(name = "deleted_at")
+    private LocalDate deletedAt;
 
     @OneToOne
     @JoinColumn(name = "provider_id", referencedColumnName = "id", insertable = false, updatable = false)
