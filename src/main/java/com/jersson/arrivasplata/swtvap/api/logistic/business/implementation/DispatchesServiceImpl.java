@@ -2,6 +2,8 @@ package com.jersson.arrivasplata.swtvap.api.logistic.business.implementation;
 
 import java.util.Optional;
 
+import com.jersson.arrivasplata.swtvap.api.logistic.enums.Status;
+import com.jersson.arrivasplata.swtvap.api.logistic.util.Common;
 import org.springframework.stereotype.Service;
 
 import com.jersson.arrivasplata.swtvap.api.logistic.business.service.DispatchesService;
@@ -44,12 +46,16 @@ public class DispatchesServiceImpl implements DispatchesService {
     }
 
     public Mono<Void> deleteDispatchesById(Long id) {
-        Optional<Dispatches> dispatches = dispatchesRepository.findById(id);
-        if (!dispatches.isPresent()) {
+        Optional<Dispatches> dispatchesOptional = dispatchesRepository.findById(id);
+        if (!dispatchesOptional.isPresent()) {
             throw new CustomException("Dispatches not found with id: " + id);
         }
-        // Resto de la lógica para eliminar un catalogo
-        dispatchesRepository.deleteById(id);
+        // Resto de la lógica para eliminar un despacho
+
+        Dispatches dispatches = dispatchesOptional.get();
+
+        dispatches.setDeletedAt(Common.builder().build().getCurrentDate());
+        dispatchesRepository.save(dispatches);
         return Mono.empty();
     }
 
