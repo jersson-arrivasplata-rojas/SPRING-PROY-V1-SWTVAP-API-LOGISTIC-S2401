@@ -25,8 +25,7 @@ public class SecurityConfiguration {
     };
 
     private static final String[] WHITE_LIST = {
-            "/swtvap-api-logistic/v3/api-docs",
-            "/api/dispatches/**"
+            "/swtvap-api-logistic/v3/api-docs"
     };
 
     @Bean
